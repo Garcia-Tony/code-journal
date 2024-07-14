@@ -1,0 +1,9 @@
+header {
+  background-color: #4c2677ff;
+}
+
+.column-full p {
+  text-align: left;
+  font-size: 30px;
+  color: white;
+}
