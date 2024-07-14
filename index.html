@@ -27,7 +27,7 @@
     </header>
 
     <main class="container">
-      <form id="dataEntryForm">
+      <form action="https://example.com/register" method="post">
         <div data-view="entry-form">
           <div class="row">
             <div class="column-full-two">
@@ -45,17 +45,19 @@
 
             <div class="column-half">
               <div><label for="title">Title</label></div>
-              <div><input type="text" id="title" name="title" /></div>
+              <div><input type="text" id="title" name="title" required /></div>
 
               <div><label for="URL">Photo URL</label></div>
-              <div><input type="text" id="URL" name="URL" /></div>
+              <div><input type="text" id="URL" name="URL" required /></div>
             </div>
           </div>
 
           <div class="row">
             <div class="column-full-three">
               <div><label for="notes">Notes</label></div>
-              <div><textarea rows="5" name="notes" id="notes"></textarea></div>
+              <div>
+                <textarea rows="5" name="notes" id="notes" required></textarea>
+              </div>
             </div>
           </div>
 
