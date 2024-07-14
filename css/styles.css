@@ -2,8 +2,66 @@ header {
   background-color: #4c2677ff;
 }
 
+body {
+  background-color: #eeef;
+}
+
 .column-full p {
   text-align: left;
   font-size: 30px;
   color: white;
+}
+
+.column-full-two p {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  padding-left: 15px;
+}
+
+.column-half {
+  width: calc(100% / 2);
+}
+
+.image {
+  width: 100%;
+}
+
+input {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 300px;
+  height: 30px;
+}
+
+.column-full-three {
+  padding-top: 10px;
+}
+
+.column-full-three input {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 750px;
+  height: 30px;
+}
+
+.column-full-three textarea {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 750px;
+  height: 30px;
+}
+
+.column-full-four {
+  position: absolute;
+  padding-left: 700px;
+  margin-bottom: 20px;
+  margin-top: -30px;
+}
+
+button {
+  background-color: #4c2677ff;
+  color: white;
+  padding: 7px;
+  font-size: 12px;
+  border-radius: 10%;
 }

@@ -25,10 +25,59 @@
         </div>
       </div>
     </header>
+
     <main class="container">
-      <div data-view="entry-form"></div>
+      <div class="row">
+        <div class="column-full-two">
+          <p><b>New Entry</b></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column-half">
+          <img
+            class="image"
+            src="images/placeholder-image-square.jpg"
+            alt="Placeholder Image" />
+        </div>
+
+        <div class="column-half">
+          <div data-view="entry-form">
+            <form id="dataEntryForm">
+              <div><label for="title">Title</label></div>
+              <div><input type="text" id="title" name="title" /></div>
+
+              <div><label for="URL">Photo URL</label></div>
+              <div><input type="text" id="URL" name="URL" /></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column-full-three">
+          <div data-view="entry-form">
+            <form id="entryForm">
+              <div><label for="notes">Notes</label></div>
+              <div><textarea id="notes" rows="4" name="notes"></textarea></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-three">
+        <div class="column-full-four">
+          <div data-view="entry-form">
+            <form id="entryFormData">
+              <button type="submit">SAVE</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div data-view="entries" class="hidden"></div>
     </main>
+
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>
