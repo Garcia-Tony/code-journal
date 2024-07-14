@@ -6,56 +6,90 @@ body {
   background-color: #eeef;
 }
 
+input {
+  margin-top: 15px;
+  margin-bottom: 40px;
+  width: 370px;
+  height: 30px;
+  margin-left: 30px;
+}
+
 .column-full p {
   text-align: left;
   font-size: 30px;
   color: white;
+  margin-left: 30px;
 }
 
 .column-full-two p {
   font-size: 30px;
   color: rgb(0, 0, 0);
   padding-left: 15px;
+  margin-left: 20px;
 }
 
 .column-half {
-  width: calc(100% / 2);
+  margin-left: 10px;
+  font-size: 10px;
+}
+
+@media screen and (width >=600px) {
+  .column-half {
+    width: calc(50% - 10px);
+    font-size: 15px;
+  }
 }
 
 .image {
-  width: 100%;
+  width: 90%;
+  padding-left: 30px;
 }
 
-input {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  width: 300px;
-  height: 30px;
+.column-half input {
+  margin-top: 10px;
+}
+
+.column-half label {
+  margin-left: 30px;
 }
 
 .column-full-three {
   padding-top: 10px;
-}
-
-.column-full-three input {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  width: 750px;
-  height: 30px;
+  margin-left: 40px;
+  font-size: 10px;
 }
 
 .column-full-three textarea {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 40px;
-  width: 750px;
-  height: 30px;
+  width: 370px;
+  height: 200px;
+}
+
+@media screen and (width >=600px) {
+  .column-full-three {
+    font-size: 15px;
+  }
+}
+
+@media screen and (width >=600px) {
+  .column-full-three textarea {
+    width: 810px;
+    margin-top: 10px;
+  }
 }
 
 .column-full-four {
   position: absolute;
-  padding-left: 700px;
+  padding-left: 360px;
   margin-bottom: 20px;
   margin-top: -30px;
+}
+
+@media screen and (width >=600px) {
+  .column-full-four {
+    padding-left: 800px;
+  }
 }
 
 button {

@@ -27,53 +27,46 @@
     </header>
 
     <main class="container">
-      <div class="row">
-        <div class="column-full-two">
-          <p><b>New Entry</b></p>
-        </div>
-      </div>
+      <form id="dataEntryForm">
+        <div data-view="entry-form">
+          <div class="row">
+            <div class="column-full-two">
+              <p><b>New Entry</b></p>
+            </div>
+          </div>
 
-      <div class="row">
-        <div class="column-half">
-          <img
-            class="image"
-            src="images/placeholder-image-square.jpg"
-            alt="Placeholder Image" />
-        </div>
+          <div class="row">
+            <div class="column-half">
+              <img
+                class="image"
+                src="images/placeholder-image-square.jpg"
+                alt="Placeholder Image" />
+            </div>
 
-        <div class="column-half">
-          <div data-view="entry-form">
-            <form id="dataEntryForm">
+            <div class="column-half">
               <div><label for="title">Title</label></div>
               <div><input type="text" id="title" name="title" /></div>
 
               <div><label for="URL">Photo URL</label></div>
               <div><input type="text" id="URL" name="URL" /></div>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="column-full-three">
-          <div data-view="entry-form">
-            <form id="entryForm">
+          <div class="row">
+            <div class="column-full-three">
               <div><label for="notes">Notes</label></div>
-              <div><textarea id="notes" rows="4" name="notes"></textarea></div>
-            </form>
+              <div><textarea rows="5" name="notes" id="notes"></textarea></div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row-three">
-        <div class="column-full-four">
-          <div data-view="entry-form">
-            <form id="entryFormData">
+          <div class="row-three">
+            <div class="column-full-four">
               <button type="submit">SAVE</button>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
+
       <div data-view="entries" class="hidden"></div>
     </main>
 
