@@ -32,6 +32,7 @@ if ($entryForm) {
         data.entries.unshift(values);
         $photoPreview.src = 'images/placeholder-image-square.jpg';
         $entryForm.reset();
+        writeData();
     });
 }
 ;
