@@ -37,11 +37,7 @@
 
           <div class="row">
             <div class="column-half">
-              <img
-                id="photoURL"
-                class="image"
-                src="images/placeholder-image-square.jpg"
-                alt="Placeholder Image" />
+              <img id="image" class="image" src="images/placeholder-image-square.jpg" alt="Placeholder Image" />
             </div>
 
             <div class="column-half">
@@ -49,14 +45,14 @@
               <div><input type="text" id="title" name="title" required /></div>
 
               <div><label for="URL">Photo URL</label></div>
-              <div><input type="text" id="URL" name="URL" required /></div>
+              <div><input type="URL" id="URL" name="photoUrl" required /></div>
             </div>
           </div>
 
           <div class="row">
             <div class="column-full-three">
               <div><label for="notes">Notes</label></div>
-              <textarea rows="5" name="notes" id="notes" required></textarea>
+              <textarea rows="5" id="notes" name="notes" required></textarea>
             </div>
           </div>
 
