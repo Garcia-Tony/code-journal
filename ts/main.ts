@@ -61,3 +61,43 @@ $entryForm.reset();
 writeData();
 })
 };
+
+
+function renderEntry (entry: Entry) {
+const li = document.createElement('li');
+li.className= 'entry';
+
+const line = document.createElement('div');
+line.className='line';
+li.appendChild(line);
+
+const column = document.createElement('div');
+column.className='column-split';
+line.appendChild(column);
+
+const dummy = document.createElement('div');
+dummy.className='dummy';
+column.appendChild(dummy);
+
+const img = document.createElement('img');
+img.src = entry.photoUrl;
+dummy.appendChild(img);
+
+const content = document.createElement('div');
+content.className='column-split';
+line.appendChild(content);
+
+const entryContent = document.createElement('div');
+entryContent.className='entry-content';
+content.appendChild(entryContent);
+
+const title = document.createElement('h3');
+title.textContent= entry.title;
+entryContent.appendChild(title);
+
+const notes = document.createElement('p');
+notes.textContent= entry.notes;
+entryContent.appendChild(notes);
+
+return li;
+}
