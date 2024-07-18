@@ -103,15 +103,33 @@ button {
   display: flex;
 }
 
-.line {
-  display: flex;
+.entry-content {
+  font-size: 10px;
 }
 
-.column-split {
-  width: calc(100% / 2);
+@media screen and (width >=600px) {
+  .entry-content {
+    font-size: 15px;
+  }
+}
+
+@media screen and (width >=600px) {
+  .line {
+    display: flex;
+  }
 }
 
 .dummy img {
-  width: calc(100% / 2);
-  width: 85%;
+  width: 90%;
+}
+
+.column-split {
+  margin-left: 10px;
+  font-size: 10px;
+}
+
+@media screen and (width >=600px) {
+  .column-split {
+    width: calc(100% / 2);
+  }
 }
