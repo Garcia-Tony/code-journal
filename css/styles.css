@@ -98,3 +98,20 @@ button {
   font-size: 12px;
   border-radius: 10%;
 }
+
+.entry {
+  display: flex;
+}
+
+.line {
+  display: flex;
+}
+
+.column-split {
+  width: calc(100% / 2);
+}
+
+.dummy img {
+  width: calc(100% / 2);
+  width: 85%;
+}
