@@ -105,3 +105,13 @@ function viewSwap(viewName) {
     }
     data.view = viewName;
 }
+const navItem = document.querySelector('.nav-item');
+if (!navItem)
+    throw new Error('navItem is null');
+navItem.addEventListener('click', (event) => {
+    const $eventTarget = event.target;
+    const viewName = $eventTarget.dataset.view;
+    if (viewName === 'entries' || viewName === 'entry-form') {
+        viewSwap(viewName);
+    }
+});

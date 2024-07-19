@@ -150,3 +150,14 @@ const entryFormView = document.querySelector('.entry-form-wrapper');
   }
   data.view = viewName;
 }
+
+const navItem = document.querySelector('.nav-item');
+
+if (!navItem) throw new Error('navItem is null');
+navItem.addEventListener('click', (event: Event) => {
+  const $eventTarget = event.target as HTMLElement;
+  const viewName = $eventTarget.dataset.view;
+  if (viewName === 'entries' || viewName === 'entry-form') {
+    viewSwap(viewName);
+  }
+})
