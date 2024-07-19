@@ -89,3 +89,19 @@ function toggleNoEntries() {
         noEntriesText.classList.remove('hidden');
     }
 }
+function viewSwap(viewName) {
+    const entriesView = document.querySelector('.entries-wrapper');
+    const entryFormView = document.querySelector('.entry-form-wrapper');
+    if (!entryFormView || !entriesView) {
+        throw new Error('entryFormView or entriesView is null');
+    }
+    if (viewName === 'entries') {
+        entriesView.classList.remove('hidden');
+        entryFormView.classList.add('hidden');
+    }
+    else if (viewName === 'entry-form') {
+        entryFormView.classList.remove('hidden');
+        entriesView.classList.add('hidden');
+    }
+    data.view = viewName;
+}
