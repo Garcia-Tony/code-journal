@@ -65,3 +65,13 @@ function renderEntry(entry) {
     entryContent.appendChild(notes);
     return li;
 }
+const entryList = document.querySelector('.entry-list');
+document.addEventListener('DOMContentLoaded', (event) => {
+    if (!entryList) {
+        throw new Error('entryList is null');
+    }
+    for (let i = 0; i < data.entries.length; i++) {
+        const entry = data.entries[i];
+        entryList.append(renderEntry(entry));
+    }
+});
