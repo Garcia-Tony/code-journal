@@ -59,8 +59,11 @@ $photoPreview.src = 'images/placeholder-image-square.jpg';
 $entryForm.reset();
 
 writeData();
+toggleNoEntries();
+
 })
 };
+
 
 
 function renderEntry (entry: Entry) {
@@ -112,4 +115,19 @@ for (let i = 0; i < data.entries.length; i++) {
   const entry = data.entries[i];
   entryList.append(renderEntry(entry));
 }
-})
+toggleNoEntries();
+});
+
+const noEntriesText = document.querySelector('.no-entries-text');
+
+function toggleNoEntries(): void {
+  if (!noEntriesText) {
+  throw new Error('noEntriesText is null');
+  }
+
+if (data.entries.length) {
+  noEntriesText.classList.add('hidden');
+} else {
+  noEntriesText.classList.remove('hidden');
+}
+}
