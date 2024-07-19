@@ -133,3 +133,8 @@ button {
     width: calc(100% / 2);
   }
 }
+
+.no-entries-text {
+  text-align: center;
+  font-size: 20px;
+}
