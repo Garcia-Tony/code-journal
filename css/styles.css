@@ -18,7 +18,7 @@ input {
   text-align: left;
   font-size: 30px;
   color: white;
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
 .column-full-two p {
@@ -148,4 +148,28 @@ margin-top: 37px;
 
 .column-full {
     display: flex;
+}
+
+.entries-column {
+      display: flex;
+      padding-left: 45px;
+}
+
+
+.new-entry-button {
+  padding: 5px 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 220px;
+  color: white;
+  background-color: #4c2677ff;
+  font-size: 13px;
+  text-decoration: none;
+
+}
+
+@media screen and (width >= 600px) {
+  .new-entry-button {
+    margin-left: 600px;
+  }
 }
