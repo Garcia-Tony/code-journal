@@ -38,7 +38,6 @@ if (!photoURL) throw new Error('photoUrl does not exist');
 const notes = document.querySelector('#notes') as HTMLTextAreaElement;
 if (!notes) throw new Error('notes does not exist');
 
-
 const $form = $entryForm.elements as FormElements;
 
 const values: Entry = {
@@ -48,11 +47,11 @@ photoUrl: $form.photoUrl.value,
 notes: $form.notes.value,
 };
 
-console.log('values:', values);
-
 data.nextEntryId++;
 
 data.entries.unshift(values);
+
+entryList?.prepend(renderEntry(values));
 
 $photoPreview.src = 'images/placeholder-image-square.jpg';
 
@@ -60,10 +59,9 @@ $entryForm.reset();
 
 writeData();
 toggleNoEntries();
-
+viewSwap('entries');
 })
 };
-
 
 
 function renderEntry (entry: Entry) {
@@ -115,10 +113,23 @@ for (let i = 0; i < data.entries.length; i++) {
   const entry = data.entries[i];
   entryList.append(renderEntry(entry));
 }
+const currentView = data.view;
+viewSwap(currentView);
 toggleNoEntries();
+
+const newButton = document.querySelector('.new-entry-button');
+if (newButton) {
+  newButton.addEventListener('click', (event: Event) => {
+event.preventDefault();
+viewSwap('entry-form');
+  });
+} else {
+  throw new Error ('newButton is null');
+}
 });
 
 const noEntriesText = document.querySelector('.no-entries-text');
+
 
 function toggleNoEntries(): void {
   if (!noEntriesText) {
@@ -131,7 +142,6 @@ if (data.entries.length) {
   noEntriesText.classList.remove('hidden');
 }
 }
-
 
 
 function viewSwap(viewName: 'entries' | 'entry-form'): void {
@@ -154,6 +164,7 @@ const entryFormView = document.querySelector('.entry-form-wrapper');
 const navItem = document.querySelector('.nav-item');
 
 if (!navItem) throw new Error('navItem is null');
+
 navItem.addEventListener('click', (event: Event) => {
   const $eventTarget = event.target as HTMLElement;
   const viewName = $eventTarget.dataset.view;

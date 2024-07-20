@@ -27,13 +27,14 @@ if ($entryForm) {
             photoUrl: $form.photoUrl.value,
             notes: $form.notes.value,
         };
-        console.log('values:', values);
         data.nextEntryId++;
         data.entries.unshift(values);
+        entryList?.prepend(renderEntry(values));
         $photoPreview.src = 'images/placeholder-image-square.jpg';
         $entryForm.reset();
         writeData();
         toggleNoEntries();
+        viewSwap('entries');
     });
 }
 ;
@@ -75,7 +76,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const entry = data.entries[i];
         entryList.append(renderEntry(entry));
     }
+    const currentView = data.view;
+    viewSwap(currentView);
     toggleNoEntries();
+    const newButton = document.querySelector('.new-entry-button');
+    if (newButton) {
+        newButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            viewSwap('entry-form');
+        });
+    }
+    else {
+        throw new Error('newButton is null');
+    }
 });
 const noEntriesText = document.querySelector('.no-entries-text');
 function toggleNoEntries() {
