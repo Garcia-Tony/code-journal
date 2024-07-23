@@ -18,7 +18,7 @@ input {
   text-align: left;
   font-size: 30px;
   color: white;
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
 .column-full-two p {
@@ -97,4 +97,80 @@ button {
   padding: 7px;
   font-size: 12px;
   border-radius: 10%;
+}
+
+.entry {
+  display: flex;
+}
+
+.entry-content {
+  font-size: 10px;
+}
+
+@media screen and (width >=600px) {
+  .entry-content {
+    font-size: 15px;
+  }
+}
+
+@media screen and (width >=600px) {
+  .line {
+    display: flex;
+  }
+}
+
+.dummy img {
+  width: 90%;
+}
+
+.column-split {
+  margin-left: 10px;
+  font-size: 10px;
+}
+
+@media screen and (width >=600px) {
+  .column-split {
+    width: calc(100% / 2);
+  }
+}
+
+.no-entries-text {
+  text-align: center;
+  font-size: 20px;
+}
+
+.nav-item {
+  color: white;
+  margin-top: 37px;
+  padding-left: 20px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.column-full {
+  display: flex;
+}
+
+.entries-column {
+  display: flex;
+  padding-left: 45px;
+}
+
+
+.new-entry-button {
+  padding: 5px 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 220px;
+  color: white;
+  background-color: #4c2677ff;
+  font-size: 13px;
+  text-decoration: none;
+
+}
+
+@media screen and (width >=600px) {
+  .new-entry-button {
+    margin-left: 600px;
+  }
 }
