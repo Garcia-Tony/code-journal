@@ -41,6 +41,7 @@ if ($entryForm) {
 function renderEntry(entry) {
     const li = document.createElement('li');
     li.className = 'entry';
+    li.setAttribute('data-entry-id', entry.entryId.toString());
     const line = document.createElement('div');
     line.className = 'line';
     li.appendChild(line);
