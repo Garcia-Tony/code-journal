@@ -103,8 +103,28 @@ button {
   display: flex;
 }
 
-.entry-content {
+.entry-content  h3{
+  margin-top: -10px;
   font-size: 10px;
+}
+
+
+@media screen and (width >=600px) {
+  .entry-content h3{
+  margin-top: -15px;
+    font-size: 15px;
+  }
+}
+
+.entry-content p {
+  font-size: 10px;
+}
+
+@media screen and (width >=600px) {
+  .entry-content p {
+    margin-top: -15px;
+    font-size: 15px;
+  }
 }
 
 @media screen and (width >=600px) {
@@ -127,6 +147,8 @@ button {
   margin-left: 10px;
   font-size: 10px;
 }
+
+
 
 @media screen and (width >=600px) {
   .column-split {
@@ -173,4 +195,20 @@ button {
   .new-entry-button {
     margin-left: 600px;
   }
+}
+
+.fa-pencil {
+  padding-top: 10px;
+  padding-left: 350px;
+}
+
+@media screen and (width >=600px) {
+  .fa-pencil {
+  padding-left: 305px;
+  }
+}
+
+.title-container {
+    display: flex;
+      align-items: center;
 }

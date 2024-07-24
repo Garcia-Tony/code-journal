@@ -1,11 +1,10 @@
-/* exported Data  */
+/* exported data, writeData */
 interface Data {
-  view: 'entries' | 'entry-form';
-  entries: Entry[];
-  editing: null | Entry;
-  nextEntryId: number;
+view: 'entries' | 'entry-form';
+entries: Entry[];
+editing: null | Entry;
+nextEntryId: number;
 }
-
 
 const dataKey = 'code-journal-data';
 

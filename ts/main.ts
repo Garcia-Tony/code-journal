@@ -92,6 +92,15 @@ const entryContent = document.createElement('div');
 entryContent.className='entry-content';
 content.appendChild(entryContent);
 
+
+const pencil = document.createElement('i');
+pencil.className = 'title-container';
+entryContent.appendChild(pencil);
+
+const pencilIcon = document.createElement('i');
+pencilIcon.className = 'fa-solid fa-pencil';
+pencil.appendChild(pencilIcon);
+
 const title = document.createElement('h3');
 title.textContent= entry.title;
 entryContent.appendChild(title);
@@ -99,6 +108,7 @@ entryContent.appendChild(title);
 const notes = document.createElement('p');
 notes.textContent= entry.notes;
 entryContent.appendChild(notes);
+
 
 return li;
 }
