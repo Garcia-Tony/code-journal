@@ -100,6 +100,7 @@ entryContent.appendChild(pencil);
 
 const pencilIcon = document.createElement('i');
 pencilIcon.className = 'fa-solid fa-pencil';
+  pencilIcon.setAttribute('data-entry-id', entry.entryId.toString());
 pencil.appendChild(pencilIcon);
 
 const title = document.createElement('h3');
@@ -114,9 +115,10 @@ entryContent.appendChild(notes);
 return li;
 }
 
-const entryList = document.querySelector('.entry-list');
 
 document.addEventListener('DOMContentLoaded', (event: Event) => {
+  const entryList = document.querySelector('.entry-list');
+
 if (!entryList) {
   throw new Error('entryList is null');
 }
@@ -124,17 +126,30 @@ for (let i = 0; i < data.entries.length; i++) {
   const entry = data.entries[i];
   entryList.append(renderEntry(entry));
 }
-const currentView = data.view;
-viewSwap(currentView);
-toggleNoEntries();
-
 
 entryList.addEventListener('click', (event) => {
 const target = event.target as HTMLElement;
 if (target.className === 'fa-solid fa-pencil') {
+
+const entryId = target.getAttribute('data-entry-id');
+if (entryId) {
+  for (let i = 0; i < data.entries.length; i++) {
+  if (data.entries[i].entryId.toString() === entryId) {
+  data.editing = data.entries[i];
+break;
+  }
+}
+if (data.editing) {
+pop(data.editing);
 viewSwap('entry-form');
 }
+}
 });
+
+const currentView = data.view;
+viewSwap(currentView);
+toggleNoEntries();
+
 
 const newButton = document.querySelector('.new-entry-button');
 if (newButton) {
@@ -145,6 +160,18 @@ viewSwap('entry-form');
 } else {
   throw new Error ('newButton is null');
 }
+
+const navItem = document.querySelector('.nav-item');
+
+if (!navItem) throw new Error('navItem is null');
+
+navItem.addEventListener('click', (event: Event) => {
+  const $eventTarget = event.target as HTMLElement;
+  const viewName = $eventTarget.dataset.view;
+  if (viewName === 'entries' || viewName === 'entry-form') {
+    viewSwap(viewName);
+  }
+});
 });
 
 const noEntriesText = document.querySelector('.no-entries-text');
@@ -176,19 +203,10 @@ const entryFormView = document.querySelector('.entry-form-wrapper');
   } else if (viewName === 'entry-form') {
     entryFormView.classList.remove('hidden');
     entriesView.classList.add('hidden');
+     if (data.editing) {
+      pop(data.editing);
+    }
   }
+
   data.view = viewName;
 }
-
-const navItem = document.querySelector('.nav-item');
-
-if (!navItem) throw new Error('navItem is null');
-
-navItem.addEventListener('click', (event: Event) => {
-  const $eventTarget = event.target as HTMLElement;
-  const viewName = $eventTarget.dataset.view;
-  if (viewName === 'entries' || viewName === 'entry-form') {
-    viewSwap(viewName);
-  }
-
-})

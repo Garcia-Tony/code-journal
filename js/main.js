@@ -65,6 +65,7 @@ function renderEntry(entry) {
     entryContent.appendChild(pencil);
     const pencilIcon = document.createElement('i');
     pencilIcon.className = 'fa-solid fa-pencil';
+    pencilIcon.setAttribute('data-entry-id', entry.entryId.toString());
     pencil.appendChild(pencilIcon);
     const title = document.createElement('h3');
     title.textContent = entry.title;
@@ -74,8 +75,8 @@ function renderEntry(entry) {
     entryContent.appendChild(notes);
     return li;
 }
-const entryList = document.querySelector('.entry-list');
 document.addEventListener('DOMContentLoaded', (event) => {
+    const entryList = document.querySelector('.entry-list');
     if (!entryList) {
         throw new Error('entryList is null');
     }
@@ -83,15 +84,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const entry = data.entries[i];
         entryList.append(renderEntry(entry));
     }
-    const currentView = data.view;
-    viewSwap(currentView);
-    toggleNoEntries();
     entryList.addEventListener('click', (event) => {
         const target = event.target;
         if (target.className === 'fa-solid fa-pencil') {
-            viewSwap('entry-form');
+            const entryId = target.getAttribute('data-entry-id');
+            if (entryId) {
+                for (let i = 0; i < data.entries.length; i++) {
+                    if (data.entries[i].entryId.toString() === entryId) {
+                        data.editing = data.entries[i];
+                        break;
+                    }
+                }
+                if (data.editing) {
+                    pop(data.editing);
+                    viewSwap('entry-form');
+                }
+            }
         }
     });
+    const currentView = data.view;
+    viewSwap(currentView);
+    toggleNoEntries();
     const newButton = document.querySelector('.new-entry-button');
     if (newButton) {
         newButton.addEventListener('click', (event) => {
@@ -102,6 +115,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     else {
         throw new Error('newButton is null');
     }
+    const navItem = document.querySelector('.nav-item');
+    if (!navItem)
+        throw new Error('navItem is null');
+    navItem.addEventListener('click', (event) => {
+        const $eventTarget = event.target;
+        const viewName = $eventTarget.dataset.view;
+        if (viewName === 'entries' || viewName === 'entry-form') {
+            viewSwap(viewName);
+        }
+    });
 });
 const noEntriesText = document.querySelector('.no-entries-text');
 function toggleNoEntries() {
@@ -128,16 +151,9 @@ function viewSwap(viewName) {
     else if (viewName === 'entry-form') {
         entryFormView.classList.remove('hidden');
         entriesView.classList.add('hidden');
+        if (data.editing) {
+            pop(data.editing);
+        }
     }
     data.view = viewName;
 }
-const navItem = document.querySelector('.nav-item');
-if (!navItem)
-    throw new Error('navItem is null');
-navItem.addEventListener('click', (event) => {
-    const $eventTarget = event.target;
-    const viewName = $eventTarget.dataset.view;
-    if (viewName === 'entries' || viewName === 'entry-form') {
-        viewSwap(viewName);
-    }
-});
