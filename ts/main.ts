@@ -128,6 +128,14 @@ const currentView = data.view;
 viewSwap(currentView);
 toggleNoEntries();
 
+
+entryList.addEventListener('click', (event) => {
+const target = event.target as HTMLElement;
+if (target.className === 'fa-solid fa-pencil') {
+viewSwap('entry-form');
+}
+});
+
 const newButton = document.querySelector('.new-entry-button');
 if (newButton) {
   newButton.addEventListener('click', (event: Event) => {
@@ -182,4 +190,5 @@ navItem.addEventListener('click', (event: Event) => {
   if (viewName === 'entries' || viewName === 'entry-form') {
     viewSwap(viewName);
   }
+
 })
