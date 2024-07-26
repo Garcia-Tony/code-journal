@@ -210,3 +210,17 @@ const entryFormView = document.querySelector('.entry-form-wrapper');
 
   data.view = viewName;
 }
+
+function pop(entry: Entry): void {
+   if (entry === null) return;
+
+  const titleInput = document.getElementById('title') as HTMLInputElement;
+  const photoUrlInput = document.getElementById('URL') as HTMLInputElement;
+  const notesInput = document.getElementById('notes') as HTMLTextAreaElement;
+  const photoPreview = document.getElementById('image') as HTMLImageElement;
+
+  if (titleInput) titleInput.value = entry.title;
+  if (photoUrlInput) photoUrlInput.value = entry.photoUrl;
+  if (notesInput) notesInput.value = entry.notes;
+  if (photoPreview) photoPreview.src = entry.photoUrl;
+}

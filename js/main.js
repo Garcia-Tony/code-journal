@@ -157,3 +157,19 @@ function viewSwap(viewName) {
     }
     data.view = viewName;
 }
+function pop(entry) {
+    if (entry === null)
+        return;
+    const titleInput = document.getElementById('title');
+    const photoUrlInput = document.getElementById('URL');
+    const notesInput = document.getElementById('notes');
+    const photoPreview = document.getElementById('image');
+    if (titleInput)
+        titleInput.value = entry.title;
+    if (photoUrlInput)
+        photoUrlInput.value = entry.photoUrl;
+    if (notesInput)
+        notesInput.value = entry.notes;
+    if (photoPreview)
+        photoPreview.src = entry.photoUrl;
+}
