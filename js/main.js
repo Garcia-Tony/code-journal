@@ -45,13 +45,18 @@ if ($entryForm) {
                     }
                     break;
                 }
-                $photoPreview.src = 'images/placeholder-image-square.jpg';
-                $entryForm.reset();
-                writeData();
-                toggleNoEntries();
-                viewSwap('entries');
             }
+            data.editing = null;
         }
+        const entryFormTitle = document.getElementById('entry-form-title');
+        if (entryFormTitle) {
+            entryFormTitle.textContent = 'New Entry';
+        }
+        $photoPreview.src = 'images/placeholder-image-square.jpg';
+        $entryForm.reset();
+        writeData();
+        toggleNoEntries();
+        viewSwap('entries');
     });
 }
 function renderEntry(entry) {

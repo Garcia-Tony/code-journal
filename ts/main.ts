@@ -64,6 +64,14 @@ entryList?.prepend(newEntry);
 }
 break;
  }
+ }
+data.editing = null;
+}
+
+const entryFormTitle = document.getElementById('entry-form-title') as HTMLElement;
+if (entryFormTitle) {
+entryFormTitle.textContent = 'New Entry';
+}
 
 $photoPreview.src = 'images/placeholder-image-square.jpg';
 $entryForm.reset();
