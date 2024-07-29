@@ -27,6 +27,11 @@ if ($entryForm) {
             photoUrl: $form.photoUrl.value,
             notes: $form.notes.value,
         };
+        if (data.editing === null) {
+            data.entries.unshift(values);
+            data.nextEntryId++;
+            entryList?.prepend(renderEntry(values));
+        }
         data.nextEntryId++;
         data.entries.unshift(values);
         entryList?.prepend(renderEntry(values));
@@ -141,6 +146,7 @@ function toggleNoEntries() {
 function viewSwap(viewName) {
     const entriesView = document.querySelector('.entries-wrapper');
     const entryFormView = document.querySelector('.entry-form-wrapper');
+    const entryFormTitle = document.getElementById('entry-form-title');
     if (!entryFormView || !entriesView) {
         throw new Error('entryFormView or entriesView is null');
     }
@@ -153,6 +159,10 @@ function viewSwap(viewName) {
         entriesView.classList.add('hidden');
         if (data.editing) {
             pop(data.editing);
+            entryFormTitle.textContent = 'Edit Entry';
+        }
+        else {
+            entryFormTitle.textContent = 'New Entry';
         }
     }
     data.view = viewName;

@@ -47,6 +47,12 @@ photoUrl: $form.photoUrl.value,
 notes: $form.notes.value,
 };
 
+if (data.editing === null) {
+  data.entries.unshift(values);
+  data.nextEntryId++;
+  entryList?.prepend(renderEntry(values));
+}
+
 data.nextEntryId++;
 
 data.entries.unshift(values);
@@ -60,8 +66,8 @@ $entryForm.reset();
 writeData();
 toggleNoEntries();
 viewSwap('entries');
-})
-};
+}
+});
 
 
 function renderEntry (entry: Entry) {
@@ -144,6 +150,7 @@ pop(data.editing);
 viewSwap('entry-form');
 }
 }
+}
 });
 
 const currentView = data.view;
@@ -193,6 +200,8 @@ if (data.entries.length) {
 function viewSwap(viewName: 'entries' | 'entry-form'): void {
 const entriesView = document.querySelector('.entries-wrapper');
 const entryFormView = document.querySelector('.entry-form-wrapper');
+  const entryFormTitle = document.getElementById('entry-form-title') as HTMLElement;
+
 
   if (!entryFormView || !entriesView) {
     throw new Error('entryFormView or entriesView is null');
@@ -205,9 +214,11 @@ const entryFormView = document.querySelector('.entry-form-wrapper');
     entriesView.classList.add('hidden');
      if (data.editing) {
       pop(data.editing);
+      entryFormTitle.textContent = 'Edit Entry';
+    } else {
+      entryFormTitle.textContent = 'New Entry';
     }
-  }
-
+    }
   data.view = viewName;
 }
 
