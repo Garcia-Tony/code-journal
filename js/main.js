@@ -37,26 +37,14 @@ if ($entryForm) {
             for (let i = 0; i < data.entries.length; i++) {
                 if (data.entries[i].entryId === data.editing.entryId) {
                     data.entries[i] = values;
-                    const newEntry = renderEntry(values);
-                    const oldEntry = document.querySelector(`[data-entry-id="${values.entryId}"]`);
-                    if (oldEntry) {
-                        entryList?.prepend(newEntry);
-                        oldEntry.parentElement?.removeChild(oldEntry);
-                    }
-                    break;
                 }
+                $photoPreview.src = 'images/placeholder-image-square.jpg';
+                $entryForm.reset();
+                writeData();
+                toggleNoEntries();
+                viewSwap('entries');
             }
-            data.editing = null;
         }
-        const entryFormTitle = document.getElementById('entry-form-title');
-        if (entryFormTitle) {
-            entryFormTitle.textContent = 'New Entry';
-        }
-        $photoPreview.src = 'images/placeholder-image-square.jpg';
-        $entryForm.reset();
-        writeData();
-        toggleNoEntries();
-        viewSwap('entries');
     });
 }
 function renderEntry(entry) {

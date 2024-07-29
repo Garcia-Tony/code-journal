@@ -53,24 +53,9 @@ if (data.editing === null) {
   entryList?.prepend(renderEntry(values));
 } else {
     values.entryId = data.editing.entryId;
-  for (let i = 0; i < data.entries.length; i++) {
+for (let i = 0; i < data.entries.length; i++) {
   if (data.entries[i].entryId === data.editing.entryId) {
   data.entries[i] = values;
-  const newEntry = renderEntry(values);
-   const oldEntry = document.querySelector(`[data-entry-id="${values.entryId}"]`);
-if (oldEntry) {
-entryList?.prepend(newEntry);
-  oldEntry.parentElement?.removeChild(oldEntry);
-}
-break;
- }
-}
-data.editing = null;
-}
-
-const entryFormTitle = document.getElementById('entry-form-title') as HTMLElement;
-if (entryFormTitle) {
-entryFormTitle.textContent = 'New Entry';
 }
 
 $photoPreview.src = 'images/placeholder-image-square.jpg';
