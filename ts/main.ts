@@ -51,26 +51,39 @@ if (data.editing === null) {
   data.entries.unshift(values);
   data.nextEntryId++;
   entryList?.prepend(renderEntry(values));
+} else {
+    values.entryId = data.editing.entryId;
+  for (let i = 0; i < data.entries.length; i++) {
+  if (data.entries[i].entryId === data.editing.entryId) {
+  data.entries[i] = values;
+  const newEntry = renderEntry(values);
+   const oldEntry = document.querySelector(`[data-entry-id="${values.entryId}"]`);
+if (oldEntry) {
+entryList?.prepend(newEntry);
+  oldEntry.parentElement?.removeChild(oldEntry);
+}
+break;
+ }
+}
+data.editing = null;
 }
 
-data.nextEntryId++;
-
-data.entries.unshift(values);
-
-entryList?.prepend(renderEntry(values));
+const entryFormTitle = document.getElementById('entry-form-title') as HTMLElement;
+if (entryFormTitle) {
+entryFormTitle.textContent = 'New Entry';
+}
 
 $photoPreview.src = 'images/placeholder-image-square.jpg';
-
 $entryForm.reset();
-
 writeData();
 toggleNoEntries();
 viewSwap('entries');
-}
 });
+}
 
 
-function renderEntry (entry: Entry) {
+
+function renderEntry (entry: Entry): HTMLElement {
 const li = document.createElement('li');
 li.className= 'entry';
 li.setAttribute('data-entry-id', entry.entryId.toString());
@@ -121,10 +134,9 @@ entryContent.appendChild(notes);
 return li;
 }
 
+const entryList = document.querySelector('.entry-list');
 
 document.addEventListener('DOMContentLoaded', (event: Event) => {
-  const entryList = document.querySelector('.entry-list');
-
 if (!entryList) {
   throw new Error('entryList is null');
 }
@@ -148,9 +160,9 @@ break;
 if (data.editing) {
 pop(data.editing);
 viewSwap('entry-form');
-}
-}
-}
+   }
+  }
+ }
 });
 
 const currentView = data.view;
@@ -213,7 +225,6 @@ const entryFormView = document.querySelector('.entry-form-wrapper');
     entryFormView.classList.remove('hidden');
     entriesView.classList.add('hidden');
      if (data.editing) {
-      pop(data.editing);
       entryFormTitle.textContent = 'Edit Entry';
     } else {
       entryFormTitle.textContent = 'New Entry';

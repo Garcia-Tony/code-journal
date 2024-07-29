@@ -32,9 +32,26 @@ if ($entryForm) {
             data.nextEntryId++;
             entryList?.prepend(renderEntry(values));
         }
-        data.nextEntryId++;
-        data.entries.unshift(values);
-        entryList?.prepend(renderEntry(values));
+        else {
+            values.entryId = data.editing.entryId;
+            for (let i = 0; i < data.entries.length; i++) {
+                if (data.entries[i].entryId === data.editing.entryId) {
+                    data.entries[i] = values;
+                    const newEntry = renderEntry(values);
+                    const oldEntry = document.querySelector(`[data-entry-id="${values.entryId}"]`);
+                    if (oldEntry) {
+                        entryList?.prepend(newEntry);
+                        oldEntry.parentElement?.removeChild(oldEntry);
+                    }
+                    break;
+                }
+            }
+            data.editing = null;
+        }
+        const entryFormTitle = document.getElementById('entry-form-title');
+        if (entryFormTitle) {
+            entryFormTitle.textContent = 'New Entry';
+        }
         $photoPreview.src = 'images/placeholder-image-square.jpg';
         $entryForm.reset();
         writeData();
@@ -42,7 +59,6 @@ if ($entryForm) {
         viewSwap('entries');
     });
 }
-;
 function renderEntry(entry) {
     const li = document.createElement('li');
     li.className = 'entry';
@@ -80,8 +96,8 @@ function renderEntry(entry) {
     entryContent.appendChild(notes);
     return li;
 }
+const entryList = document.querySelector('.entry-list');
 document.addEventListener('DOMContentLoaded', (event) => {
-    const entryList = document.querySelector('.entry-list');
     if (!entryList) {
         throw new Error('entryList is null');
     }
@@ -158,7 +174,6 @@ function viewSwap(viewName) {
         entryFormView.classList.remove('hidden');
         entriesView.classList.add('hidden');
         if (data.editing) {
-            pop(data.editing);
             entryFormTitle.textContent = 'Edit Entry';
         }
         else {
