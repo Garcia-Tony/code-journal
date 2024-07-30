@@ -20,24 +20,29 @@
       <div class="container">
         <div class="row">
           <div class="column-full">
-            <p><b>Code Journal</b></p>
+          <p><b>Code Journal</b></p>
+          <a href="#" data-view="entries" class="nav-item">Entries</a>
           </div>
         </div>
       </div>
     </header>
 
     <main class="container">
+     <div data-view="entry-form" class="entry-form-wrapper " >
       <form id="entryForm">
-        <div data-view="entry-form">
-          <div class="row">
+        <div class="row">
             <div class="column-full-two">
-              <p><b>New Entry</b></p>
+              <p><b id="entry-form-title">New Entry</b></p>
             </div>
           </div>
 
           <div class="row">
             <div class="column-half">
-              <img id="image" class="image" src="images/placeholder-image-square.jpg" alt="Placeholder Image" />
+              <img
+                id="image"
+                class="image"
+                src="images/placeholder-image-square.jpg"
+                alt="Placeholder Image" />
             </div>
 
             <div class="column-half">
@@ -61,9 +66,23 @@
               <button type="submit">SAVE</button>
             </div>
           </div>
+
+            <div class="row-four">
+            <div class="column-full-five">
+              <button type="delete"><u>Delete Entry</u></button>
+            </div>
+          </div>
+           </form>
         </div>
-      </form>
-      <div data-view="entries" class="hidden"></div>
+
+      <div data-view="entries" class="entries-wrapper hidden">
+        <div class="entries-column">
+        <h1>Entries</h1>
+          <a href="#" class="new-entry-button" data-view="entry-form">NEW</a>
+          </div>
+        <p class="no-entries-text">No entries have been recorded</p>
+        <ul class="entry-list"></ul>
+      </div>
     </main>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
