@@ -47,6 +47,7 @@ if ($entryForm) {
                 }
             }
             data.editing = null;
+            toggleDeleteButton();
         }
         const entryFormTitle = document.getElementById('entry-form-title');
         if (entryFormTitle) {
@@ -181,6 +182,7 @@ function viewSwap(viewName) {
         }
     }
     data.view = viewName;
+    toggleDeleteButton();
 }
 function pop(entry) {
     if (entry === null)
@@ -224,4 +226,15 @@ if ($cancelEntry) {
             $confirmation.close();
         }
     });
+}
+function toggleDeleteButton() {
+    const deleteEntryButton = document.getElementById('delete-entry');
+    if (!deleteEntryButton)
+        throw new Error('deleteEntryButton is null');
+    if (data.editing) {
+        deleteEntryButton.classList.remove('hidden');
+    }
+    else {
+        deleteEntryButton.classList.add('hidden');
+    }
 }
