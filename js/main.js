@@ -41,7 +41,7 @@ if ($entryForm) {
                     const oldEntry = document.querySelector(`[data-entry-id="${values.entryId}"]`);
                     if (oldEntry) {
                         entryList?.prepend(newEntry);
-                        oldEntry.parentElement?.removeChild(oldEntry);
+                        oldEntry.remove();
                     }
                     break;
                 }
