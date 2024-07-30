@@ -25,6 +25,7 @@ if ($photoUrlInput) {
 
 const $entryForm = document.getElementById('entryForm') as HTMLFormElement;
 
+
 if ($entryForm) {
   $entryForm.addEventListener('submit', (event) => {
 event.preventDefault();
@@ -56,10 +57,10 @@ if (data.editing === null) {
 for (let i = 0; i < data.entries.length; i++) {
   if (data.entries[i].entryId === data.editing.entryId) {
   data.entries[i] = values;
-const newEntry = renderEntry(values);
+   const newEntry = renderEntry(values);
    const oldEntry = document.querySelector(`[data-entry-id="${values.entryId}"]`);
 if (oldEntry) {
-entryList?.prepend(newEntry);
+  entryList?.prepend(newEntry);
   oldEntry.parentElement?.removeChild(oldEntry);
 }
 break;
@@ -246,3 +247,32 @@ function pop(entry: Entry): void {
   if (notesInput) notesInput.value = entry.notes;
   if (photoPreview) photoPreview.src = entry.photoUrl;
 }
+
+
+const $deleteEntry = document.querySelector('#delete-entry') as HTMLButtonElement;
+if (!$deleteEntry) throw new Error('$deleteEntry does not exist');
+
+const $confirmation = document.querySelector('#confirmation') as HTMLDialogElement;
+if (!$confirmation) throw new Error('$confirmation does not exist');
+
+const $confirmEntry = document.querySelector('.confirm-entry') as HTMLButtonElement;
+if (!$confirmEntry) throw new Error('$confirmationEntry does not exist');
+
+const $cancelEntry = document.querySelector('.cancel-entry') as HTMLButtonElement;;
+if (!$cancelEntry) throw new Error('$cancelEntry does not exist');
+
+if ($deleteEntry) {
+  $deleteEntry.addEventListener('click', () => {
+if ($confirmation) {
+  $confirmation.showModal();
+}
+  });
+}
+
+  if ($cancelEntry) {
+    $cancelEntry.addEventListener('click', () => {
+      if ($confirmation) {
+        $confirmation.close();
+      }
+    });
+  }

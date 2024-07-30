@@ -198,3 +198,30 @@ function pop(entry) {
     if (photoPreview)
         photoPreview.src = entry.photoUrl;
 }
+const $deleteEntry = document.querySelector('#delete-entry');
+if (!$deleteEntry)
+    throw new Error('$deleteEntry does not exist');
+const $confirmation = document.querySelector('#confirmation');
+if (!$confirmation)
+    throw new Error('$confirmation does not exist');
+const $confirmEntry = document.querySelector('.confirm-entry');
+if (!$confirmEntry)
+    throw new Error('$confirmationEntry does not exist');
+const $cancelEntry = document.querySelector('.cancel-entry');
+;
+if (!$cancelEntry)
+    throw new Error('$cancelEntry does not exist');
+if ($deleteEntry) {
+    $deleteEntry.addEventListener('click', () => {
+        if ($confirmation) {
+            $confirmation.showModal();
+        }
+    });
+}
+if ($cancelEntry) {
+    $cancelEntry.addEventListener('click', () => {
+        if ($confirmation) {
+            $confirmation.close();
+        }
+    });
+}
