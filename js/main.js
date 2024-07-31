@@ -225,6 +225,21 @@ if ($cancelEntry) {
         }
     });
 }
+if ($confirmEntry) {
+    $confirmEntry.addEventListener('click', () => {
+        if (data.editing !== null) {
+            let index = 1;
+            for (let i = 0; i < data.entries.length; i++) {
+                if (data.entries[i].entryId === data.editing.entryId) {
+                    index = i;
+                }
+            }
+            if (index !== 1) {
+                data.entries.splice(index, 1);
+            }
+        }
+    });
+}
 function toggleDeleteButton() {
     const deleteEntryButton = document.getElementById('delete-entry');
     if (!deleteEntryButton)
