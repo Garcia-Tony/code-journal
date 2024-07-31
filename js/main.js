@@ -236,6 +236,10 @@ if ($confirmEntry) {
             }
             if (index !== 1) {
                 data.entries.splice(index, 1);
+                const entryElement = document.querySelector(`[data-entry-id="${data.editing.entryId}"]`);
+                if (entryElement) {
+                    entryElement.remove();
+                }
             }
         }
     });
