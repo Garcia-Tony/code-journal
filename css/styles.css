@@ -216,3 +216,37 @@ padding-left: 40px;
 margin-top: -40px;
 color: red;
 }
+
+.confirmation {
+  border: none;
+  border-radius: 8px;
+}
+
+.confirmation h2 {
+  font-size: 20px;
+padding-top: 0;
+margin-top: 0;
+padding-bottom: 25px;
+font-weight: normal;
+}
+
+.cancel-entry {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 17px;
+}
+
+.confirm-entry {
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 17px;
+  background-color: red;
+}
+
+.modal-actions {
+  display: flex;
+justify-content: space-between;
+}
