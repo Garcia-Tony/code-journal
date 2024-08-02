@@ -72,8 +72,8 @@ const entryFormTitle = document.getElementById('entry-form-title') as HTMLElemen
 if (entryFormTitle) {
 entryFormTitle.textContent = 'New Entry';
 }
+resetForm();
 
-$photoPreview.src = 'images/placeholder-image-square.jpg';
 $entryForm.reset();
 writeData();
 toggleNoEntries();
@@ -287,10 +287,11 @@ $confirmEntry.addEventListener('click', () => {
   if (entryElement) {
   entryElement.remove();
   }
+
 data.editing = null;
 writeData();
 toggleNoEntries();
-$entryForm.reset();
+resetForm();
 $confirmation.close();
 viewSwap('entries');
     }
@@ -317,4 +318,14 @@ viewSwap('entries');
   } else {
     deleteEntryButton.classList.add('hidden');
   }
+}
+
+const entryImagePlaceholder = 'images/placeholder-image-square.jpg';
+
+function resetForm(): void {
+    if (!$photoPreview) {
+      throw new Error('photoPreview is null');
+    }
+    $photoPreview.setAttribute('src', entryImagePlaceholder);
+    $entryForm.reset();
 }

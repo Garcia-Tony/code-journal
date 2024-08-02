@@ -51,7 +51,7 @@ if ($entryForm) {
         if (entryFormTitle) {
             entryFormTitle.textContent = 'New Entry';
         }
-        $photoPreview.src = 'images/placeholder-image-square.jpg';
+        resetForm();
         $entryForm.reset();
         writeData();
         toggleNoEntries();
@@ -237,7 +237,7 @@ if ($confirmEntry) {
                 data.editing = null;
                 writeData();
                 toggleNoEntries();
-                $entryForm.reset();
+                resetForm();
                 $confirmation.close();
                 viewSwap('entries');
             }
@@ -262,4 +262,12 @@ function toggleDeleteButton() {
     else {
         deleteEntryButton.classList.add('hidden');
     }
+}
+const entryImagePlaceholder = 'images/placeholder-image-square.jpg';
+function resetForm() {
+    if (!$photoPreview) {
+        throw new Error('photoPreview is null');
+    }
+    $photoPreview.setAttribute('src', entryImagePlaceholder);
+    $entryForm.reset();
 }
