@@ -243,6 +243,9 @@ if ($confirmEntry) {
                     writeData();
                     toggleNoEntries();
                     $entryForm.reset();
+                    if ($confirmation) {
+                        $confirmation.close();
+                    }
                 }
             }
         }

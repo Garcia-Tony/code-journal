@@ -297,7 +297,9 @@ if ($confirmation) {
         toggleNoEntries();
         $entryForm.reset();
 
-
+  if ($confirmation) {
+          $confirmation.close();
+        }
       }
     }
   }
