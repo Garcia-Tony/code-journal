@@ -239,6 +239,10 @@ if ($confirmEntry) {
                 const entryElement = document.querySelector(`[data-entry-id="${data.editing.entryId}"]`);
                 if (entryElement) {
                     entryElement.remove();
+                    data.editing = null;
+                    writeData();
+                    toggleNoEntries();
+                    $entryForm.reset();
                 }
             }
         }
