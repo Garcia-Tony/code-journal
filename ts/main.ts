@@ -298,7 +298,6 @@ viewSwap('entries');
 });
   }
 
-
  if ($cancelEntry) {
     $cancelEntry.addEventListener('click', () => {
       event?.preventDefault();
