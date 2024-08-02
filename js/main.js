@@ -218,13 +218,6 @@ if ($deleteEntry) {
         }
     });
 }
-if ($cancelEntry) {
-    $cancelEntry.addEventListener('click', () => {
-        if ($confirmation) {
-            $confirmation.close();
-        }
-    });
-}
 if ($confirmEntry) {
     $confirmEntry.addEventListener('click', () => {
         if (data.editing !== null) {
@@ -232,6 +225,7 @@ if ($confirmEntry) {
             for (let i = 0; i < data.entries.length; i++) {
                 if (data.entries[i].entryId === data.editing.entryId) {
                     index = i;
+                    break;
                 }
             }
             if (index !== 1) {
@@ -239,15 +233,22 @@ if ($confirmEntry) {
                 const entryElement = document.querySelector(`[data-entry-id="${data.editing.entryId}"]`);
                 if (entryElement) {
                     entryElement.remove();
-                    data.editing = null;
-                    writeData();
-                    toggleNoEntries();
-                    $entryForm.reset();
-                    if ($confirmation) {
-                        $confirmation.close();
-                    }
                 }
+                data.editing = null;
+                writeData();
+                toggleNoEntries();
+                $entryForm.reset();
+                $confirmation.close();
+                viewSwap('entries');
             }
+        }
+    });
+}
+if ($cancelEntry) {
+    $cancelEntry.addEventListener('click', () => {
+        event?.preventDefault();
+        if ($confirmation) {
+            $confirmation.close();
         }
     });
 }

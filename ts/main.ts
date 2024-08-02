@@ -190,7 +190,7 @@ navItem.addEventListener('click', (event: Event) => {
   if (viewName === 'entries' || viewName === 'entry-form') {
     viewSwap(viewName);
   }
-});
+ });
 });
 
 const noEntriesText = document.querySelector('.no-entries-text');
@@ -203,9 +203,9 @@ function toggleNoEntries(): void {
 
 if (data.entries.length) {
   noEntriesText.classList.add('hidden');
-} else {
+ } else {
   noEntriesText.classList.remove('hidden');
-}
+ }
 }
 
 
@@ -268,43 +268,45 @@ if ($confirmation) {
 }
   });
 }
-  if ($cancelEntry) {
-    $cancelEntry.addEventListener('click', () => {
-      if ($confirmation) {
-        $confirmation.close();
-      }
-    });
-  }
 
-  if ($confirmEntry) {
-  $confirmEntry.addEventListener('click', () => {
-    if (data.editing !== null) {
-      let index = 1;
-       for (let i = 0; i < data.entries.length; i++) {
+if ($confirmEntry) {
+$confirmEntry.addEventListener('click', () => {
+  if (data.editing !== null) {
+    let index = 1;
+    for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
         index = i;
+        break;
       }
     }
 
-    if (index !== 1) {
-      data.entries.splice(index,1);
+  if (index !== 1) {
+  data.entries.splice(index,1);
 
-       const entryElement = document.querySelector(`[data-entry-id="${data.editing.entryId}"]`);
-      if (entryElement) {
-        entryElement.remove();
-        data.editing = null;
-        writeData();
-        toggleNoEntries();
-        $entryForm.reset();
-
-  if ($confirmation) {
-          $confirmation.close();
-        }
-      }
+  const entryElement = document.querySelector(`[data-entry-id="${data.editing.entryId}"]`);
+  if (entryElement) {
+  entryElement.remove();
+  }
+data.editing = null;
+writeData();
+toggleNoEntries();
+$entryForm.reset();
+$confirmation.close();
+viewSwap('entries');
     }
   }
+});
+  }
+
+
+ if ($cancelEntry) {
+    $cancelEntry.addEventListener('click', () => {
+      event?.preventDefault();
+ if ($confirmation) {
+   $confirmation.close();
 }
-  )}
+});
+}
 
   function toggleDeleteButton(): void {
   const deleteEntryButton = document.getElementById('delete-entry') as HTMLButtonElement;
